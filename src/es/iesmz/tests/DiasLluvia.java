@@ -19,4 +19,7 @@ public class DiasLluvia {
     }
 
 
+    public boolean consultarDia(int dia, int mes){
+        return this.calendario[mes][dia];
+    }
 }
