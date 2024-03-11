@@ -3,7 +3,7 @@ package es.iesmz.tests;
 public class DiasLluvia {
     private boolean[][] calendario;
 
-    public DiasLluvia(boolean[][] calendario) {
+    public DiasLluvia() {
         this.calendario = new boolean[12][31];
     }
 
@@ -11,6 +11,7 @@ public class DiasLluvia {
         if (dia > 0 && dia <= 31) {
             if (lluvia) {
                 this.calendario[mes][dia] = true;
+                return true;
             }
         } else {
             System.err.println("Fecha no válida");
@@ -27,7 +28,7 @@ public class DiasLluvia {
         int contador = 0;
         for (int i = 0; i < 12; i++) {
             for (int j = 0; j < 31; j++) {
-                if (this.calendario[j][i]) {
+                if (consultarDia(j, i)) {
                     contador++;
                 }
             }
@@ -40,7 +41,7 @@ public class DiasLluvia {
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 31; j++) {
-                if (this.calendario[j][i]) {
+                if (consultarDia(j, i)) {
                     contador++;
                 }
             }
@@ -49,7 +50,7 @@ public class DiasLluvia {
         contador = 0;
         for (int i = 3; i < 6; i++) {
             for (int j = 0; j < 31; j++) {
-                if (this.calendario[j][i]) {
+                if (consultarDia(j, i)) {
                     contador++;
                 }
             }
@@ -58,7 +59,7 @@ public class DiasLluvia {
         contador = 0;
         for (int i = 6; i < 9; i++) {
             for (int j = 0; j < 31; j++) {
-                if (this.calendario[j][i]) {
+                if (consultarDia(j, i)) {
                     contador++;
                 }
             }
@@ -67,7 +68,7 @@ public class DiasLluvia {
         contador = 0;
         for (int i = 9; i < 12; i++) {
             for (int j = 0; j < 31; j++) {
-                if (this.calendario[j][i]) {
+                if (consultarDia(j, i)) {
                     contador++;
                 }
             }
@@ -80,25 +81,31 @@ public class DiasLluvia {
         for (int i = 1; i < valores.length; i++) {
             if (valores[i] > mayorTrimestre) {
                 mayorTrimestre = valores[i];
-            } else {
-                return mayorTrimestre;
+
             }
         }
-        return mayorTrimestre;
+        if (mayorTrimestre == t1) {
+            return 1;
+        } else if (mayorTrimestre == t2) {
+            return 2;
+        } else if (mayorTrimestre == t3) {
+            return 3;
+        } else if (mayorTrimestre == t4) {
+            return 4;
+
+        }
+        return -1;
     }
 
-    public int primerDiaLluvia(){
-        int contador = 0; int diita = 0;
-        do{
+
+    public int primerDiaLluvia() {
         for (int i = 0; i < 12; i++) {
             for (int j = 0; j < 31; j++) {
-                diita++;
-                if (this.calendario[j][i]) {
-                    contador++;
+                if (consultarDia(j, i)) {
+                    return j;
                 }
             }
         }
-        }while (contador!=1);
-        return diita;
+        return -1;
     }
 }
