@@ -19,7 +19,19 @@ public class DiasLluvia {
     }
 
 
-    public boolean consultarDia(int dia, int mes){
+    public boolean consultarDia(int dia, int mes) {
         return this.calendario[mes][dia];
+    }
+
+    public int contarDiasLluviosos() {
+        int contador = 0;
+        for (int i = 0; i < 12; i++) {
+            for (int j = 0; j < 31; j++) {
+                if (this.calendario[j][i]) {
+                    contador++;
+                }
+            }
+        }
+        return contador;
     }
 }
