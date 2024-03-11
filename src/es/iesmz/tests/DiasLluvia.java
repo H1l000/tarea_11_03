@@ -86,6 +86,19 @@ public class DiasLluvia {
         }
         return mayorTrimestre;
     }
+
+    public int primerDiaLluvia(){
+        int contador = 0; int diita = 0;
+        do{
+        for (int i = 0; i < 12; i++) {
+            for (int j = 0; j < 31; j++) {
+                diita++;
+                if (this.calendario[j][i]) {
+                    contador++;
+                }
+            }
+        }
+        }while (contador!=1);
+        return diita;
+    }
 }
-
-
